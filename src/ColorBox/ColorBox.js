@@ -13,7 +13,7 @@ export default class ColorBox extends Component {
         this.setState({ copied: true }, () => {
             setTimeout(() => {
                 this.setState({ copied: false })
-            }, 1300);
+            }, 1200);
         })
     }
 
@@ -21,25 +21,25 @@ export default class ColorBox extends Component {
         const { name, background } = this.props
         const { copied: isCopied } = this.state
         return (
-            <CopyToClipboard text={background} onCopy={this.changeCopyState} >
-                <div style={{ background }} className='colorBox' >
-                    <div style={{ background }}
-                        className={`copy-overlay ${isCopied && 'show'}`} >
-                    </div>
-                    <div
-                        className={`copy-msg ${isCopied && 'show'}`} >
-                        <h1>copied!</h1>
-                        <p>{this.props.background}</p>
-                    </div>
-                    <div className='copy-container' >
-                        <div className='box-content' >
-                            <span>{name}</span>
-                        </div>
-                        <button className='copy-button' >Copy</button>
-                    </div>
-                    <span className='see-more' >More</span>
+            <div style={{ background }} className='colorBox' >
+                <div style={{ background }}
+                    className={`copy-overlay ${isCopied && 'show'}`} >
                 </div>
-            </CopyToClipboard>
+                <div
+                    className={`copy-msg ${isCopied && 'show'}`} >
+                    <h1>copied!</h1>
+                    <p>{this.props.background}</p>
+                </div>
+                <div className='copy-container' >
+                    <div className='box-content' >
+                        <span>{name}</span>
+                    </div>
+                    <CopyToClipboard text={background} onCopy={this.changeCopyState} >
+                        <button className='copy-button' >Copy</button>
+                    </CopyToClipboard>
+                </div>
+                <span className='see-more' >More</span>
+            </div >
         )
     }
 }

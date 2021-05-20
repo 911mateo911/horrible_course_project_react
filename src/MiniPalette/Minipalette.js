@@ -27,13 +27,13 @@ const styles = {
         margin: '0',
         color: 'black',
         paddingTop: '0.5rem',
-        fontSize: '1rem',
+        fontSize: '.8rem',
         position: 'relative'
     },
     emoji: {
         backgroundColor: 'white',
         marginLeft: '0.5rem',
-        fontSize: '1.5rem'
+        fontSize: '1rem'
     },
     miniColor: {
         height: '25%',
@@ -55,7 +55,7 @@ function MiniPalette(props) {
         />
     ))
     return (
-        <div className={classes.root} >
+        <div className={classes.root} onClick={props.handleClick} >
             <div className={classes.colors} >
                 {miniColorBoxes}
             </div>

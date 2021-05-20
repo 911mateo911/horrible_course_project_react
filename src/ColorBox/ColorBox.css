@@ -5,8 +5,45 @@
   margin: 0 auto;
   display: inline-block;
   position: relative;
-  cursor: pointer;
   margin-bottom: -5px;
+}
+
+.singleColor .colorBox {
+  height: 50%;
+}
+
+.colorBox.go-back {
+  background-color: black;
+  color: white;
+}
+
+.back-btn {
+  width: 100px;
+  height: 30px;
+  cursor: pointer;
+  position: absolute;
+  display: inline-block;
+  top: 50%;
+  left: 50%;
+  margin-left: -50px;
+  margin-top: -15px;
+  font-weight: 500;
+  text-align: center;
+  outline: none;
+  background: rgba(255, 255, 255, 0.3);
+  font-size: 0.8rem;
+  line-height: 30px;
+  text-decoration: none;
+  color: white;
+  text-transform: uppercase;
+  border: none;
+  transition: 0.2s;
+}
+
+.h1.dark-text,
+.copy-button.dark-text {
+  filter: brightness(50%);
+  color: rgba(0, 0, 0, 0.9);
 }
 
 .copy-button {
@@ -36,7 +73,8 @@
   transition: 0.2s;
 }
 
-.copy-button:hover {
+.copy-button:hover,
+.back-btn:hover {
   background: rgba(255, 255, 255, 0.55);
 }
 

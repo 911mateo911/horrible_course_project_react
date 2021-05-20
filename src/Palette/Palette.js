@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import ColorBox from '../ColorBox/ColorBox'
 import Navbar from '../Navbar/Navbar'
 import './Palette.css'
+import Footer from '../Palettefooter/Palettefooter'
 
 export default class Palette extends Component {
     constructor() {
@@ -20,13 +21,15 @@ export default class Palette extends Component {
         this.setState({ format: e })
     }
     render() {
-        const { colors, paletteName, emoji } = this.props.palette
+        const { colors, paletteName, emoji, id } = this.props.palette
         const { level, format } = this.state
         const colorBoxes = colors[level].map(color =>
             <ColorBox
                 background={color[format]}
                 name={color.name}
                 key={color.id}
+                showLink
+                moreUrl={`/palette/${id}/${color.id}`}
             />)
         return (
             <div className='palette' >
@@ -34,15 +37,12 @@ export default class Palette extends Component {
                     level={level}
                     changeLevel={this.changeLevel}
                     handleChange={this.changeFormat}
+                    showAllColors
                 />
                 <div className='palette-colors' >
                     {colorBoxes}
                 </div>
-                <footer className='palette-footer' >
-                    <div className='footer-text'>
-                        {paletteName}<span>{emoji}</span>
-                    </div>
-                </footer>
+                <Footer paletteName={paletteName} emoji={emoji} />
             </div>
         )
     }

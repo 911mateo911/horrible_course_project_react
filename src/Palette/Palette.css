@@ -21,3 +21,16 @@
   box-sizing: border-box;
   padding-right: 10px;
 }
+
+.footer-text {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-text span {
+  margin: 0 5px;
+  text-align: center;
+}

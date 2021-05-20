@@ -30,6 +30,10 @@
   display: inline-block;
 }
 
+.slider-container span {
+  font-size: .9rem;
+}
+
 .rc-slider-track {
   background-color: transparent;
 }
@@ -48,6 +52,10 @@
   box-shadow: none;
   height: 13px;
   width: 13px;
-  margin-left: -7px;
   margin-top: -3px;
+}
+
+.select-container {
+  margin-left: auto;
+  margin-right: 1rem;
 }

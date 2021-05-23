@@ -20,7 +20,7 @@ const styles = {
         left: '0',
         bottom: '0',
         padding: '10px',
-        color: 'black',
+        color: props => chroma(props.color).luminance() >= 0.4 ? 'rgba(0, 0, 0, 0.8)' : 'white',
         fontSize: '11px',
         letterSpacing: '1px',
         boxSizing: 'border-box',

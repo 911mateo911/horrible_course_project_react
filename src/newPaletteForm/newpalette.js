@@ -18,26 +18,8 @@ const styles = theme => ({
     root: {
         display: "flex"
     },
-    appBar: {
-        transition: theme.transitions.create(["margin", "width"], {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.leavingScreen
-        })
-    },
-    appBarShift: {
-        width: `calc(100% - ${drawerWidth}px)`,
-        marginLeft: drawerWidth,
-        transition: theme.transitions.create(["margin", "width"], {
-            easing: theme.transitions.easing.easeOut,
-            duration: theme.transitions.duration.enteringScreen
-        })
-    },
     randColBtn: {
         backgroundColor: '#5262bc'
-    },
-    menuButton: {
-        marginLeft: 12,
-        marginRight: 20
     },
     hide: {
         display: "none"
@@ -47,7 +29,9 @@ const styles = theme => ({
         flexShrink: 0
     },
     drawerPaper: {
-        width: drawerWidth
+        width: drawerWidth,
+        display: 'flex',
+        alignItems: 'center'
     },
     drawerHeader: {
         display: "flex",
@@ -72,6 +56,23 @@ const styles = theme => ({
             duration: theme.transitions.duration.enteringScreen
         }),
         marginLeft: 0
+    },
+    container: {
+        height: '100%',
+        width: '90%',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    buttonCont: {
+        width: '100%',
+        display: 'flex',
+        justifyContent: 'space-around',
+        marginTop: '1rem'
+    },
+    button: {
+        width: '45%'
     }
 });
 
@@ -117,12 +118,9 @@ class NewPaletteForm extends Component {
         this.setState({ colors: [...this.state.colors, randomColor] })
     }
 
-    handleSubmit(newPaletteName) {
-        const newPalette = {
-            paletteName: newPaletteName,
-            id: newPaletteName.toLowerCase().replace(/ /g, '-'),
-            colors: this.state.colors,
-        }
+    handleSubmit(newPalette) {
+        newPalette.id = newPalette.paletteName.toLowerCase().replace(/ /g, '-')
+        newPalette.colors = this.state.colors
         this.props.savePalette(newPalette)
         this.props.history.push('/')
     }
@@ -152,7 +150,6 @@ class NewPaletteForm extends Component {
             <div className={classes.root}>
                 <PaletteFormNav
                     open={open}
-                    classes={classes}
                     palettes={palettes}
                     handleDrawerOpen={this.handleDrawerOpen}
                     handleSubmit={this.handleSubmit}
@@ -172,28 +169,35 @@ class NewPaletteForm extends Component {
                         </IconButton>
                     </div>
                     <Divider />
-                    <Typography variant='h4' >
-                        Design your palette
+                    <div className={classes.container} >
+                        <Typography variant='h4' >
+                            Design your palette
                     </Typography>
-                    <div>
-                        <Button onClick={this.clearColors} variant='outlined' color='secondary' >
-                            Clear Palette
+                        <div className={classes.buttonCont} >
+                            <Button
+                                onClick={this.clearColors}
+                                variant='outlined'
+                                color='secondary'
+                                className={classes.btn}
+                            >
+                                Clear Palette
                     </Button>
-                        <Button
-                            disabled={paletteIsFull}
-                            onClick={this.addRandColor}
-                            className={classes.randColBtn}
-                            variant='contained'
-                            color='primary'
-                        >
-                            Random Color
+                            <Button
+                                disabled={paletteIsFull}
+                                onClick={this.addRandColor}
+                                className={classes.randColBtn}
+                                variant='contained'
+                                color='primary'
+                            >
+                                Random Color
                     </Button>
+                        </div>
+                        <ColorPicker
+                            paletteIsFull={paletteIsFull}
+                            addNewColor={this.addNewColor}
+                            colors={colors}
+                        />
                     </div>
-                    <ColorPicker
-                        paletteIsFull={paletteIsFull}
-                        addNewColor={this.addNewColor}
-                        colors={colors}
-                    />
                 </Drawer>
                 <main
                     className={classNames(classes.content, {

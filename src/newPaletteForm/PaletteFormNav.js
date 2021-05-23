@@ -6,16 +6,18 @@ import { withStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
+import AddToPhotosIcon from '@material-ui/icons/AddToPhotos'
 import { Link } from 'react-router-dom'
 import { Button } from "@material-ui/core";
 import PaletteMetaForm from './PaletteMetaForm'
-
-const drawerWidth = 400;
+import { DRAWER_WIDTH as drawerWidth } from '../constants'
 
 const styles = theme => ({
     root: {
         display: 'flex'
+    },
+    hide: {
+        display: "none"
     },
     appBar: {
         transition: theme.transitions.create(["margin", "width"], {
@@ -67,7 +69,7 @@ class PaletteFormNav extends Component {
     }
 
     hideForm() {
-        this.setState({formShowing: false})
+        this.setState({ formShowing: false })
     }
 
     render() {
@@ -88,7 +90,7 @@ class PaletteFormNav extends Component {
                             aria-label='Open drawer'
                             onClick={this.props.handleDrawerOpen}
                             className={classNames(classes.menuButton, open && classes.hide)}>
-                            <MenuIcon />
+                            <AddToPhotosIcon />
                         </IconButton>
                         <Typography variant='h6' color='inherit' noWrap>
                             Create a new Palette

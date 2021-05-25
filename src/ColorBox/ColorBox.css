@@ -164,3 +164,15 @@
   font-weight: 100;
   text-transform: uppercase;
 }
+
+@media (max-width: 900px) {
+  .colorBox {
+    width: 50%;
+  }
+}
+
+@media (max-width: 500px) {
+  .colorBox {
+    width: 100%;
+  }
+}

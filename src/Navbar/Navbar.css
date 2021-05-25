@@ -59,3 +59,34 @@
   margin-left: auto;
   margin-right: 1rem;
 }
+
+@media (max-width: 900px) {
+  .navbar {
+    flex-direction: column;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+  }
+  .select-container {
+    align-self: center;
+    margin: 10px;
+  }
+  .slider-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 10px;
+  }
+  .logo {
+    padding: 1rem;
+    width: 100%;
+  }
+}
+
+@media (max-width: 500px) {
+  .colorBox {
+    width: 100%;
+  }
+}

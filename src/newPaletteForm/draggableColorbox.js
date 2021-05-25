@@ -3,6 +3,7 @@ import { withStyles } from '@material-ui/styles'
 import DeleteIcon from '@material-ui/icons/Delete';
 import chroma from 'chroma-js'
 import { SortableElement } from 'react-sortable-hoc'
+import sizes from '../sizes'
 
 const styles = {
     root: {
@@ -12,7 +13,19 @@ const styles = {
         display: 'inline-block',
         cursor: 'pointer',
         marginBottom: '-5px',
-        position: 'relative'
+        position: 'relative',
+        [sizes.down('lg')]: {
+            width: '25%',
+            height: '20%'
+        },
+        [sizes.down('md')]: {
+            width: '50%',
+            height: '10%'
+        },
+        [sizes.down('sm')]: {
+            width: '100%',
+            height: '5%'
+        }
     },
     boxContent: {
         position: 'absolute',

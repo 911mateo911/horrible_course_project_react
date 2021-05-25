@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { withStyles } from '@material-ui/styles'
 import DeleteIcon from '@material-ui/icons/Delete'
 
@@ -59,7 +59,7 @@ const styles = {
     }
 }
 
-class MiniPalette extends Component {
+class MiniPalette extends PureComponent {
     constructor() {
         super()
         this.deletePalette = this.deletePalette.bind(this)
@@ -79,8 +79,9 @@ class MiniPalette extends Component {
                 key={col.name}
             />
         ))
+        console.log('rerendering', paletteName)
         return (
-            <div className={classes.root} onClick={handleClick} >
+            <div className={classes.root} onClick={() => handleClick(this.props.id)} >
                 <DeleteIcon
                     className={classes.deleteIcon}
                     style={{ transition: 'all 0.2s ease-in-out' }}
